@@ -1,0 +1,22 @@
+
+{% extends 'event-base.html' %}
+
+{% block inhead %}
+<title>Parsed text</title>
+{% endblock %} 
+
+{% block provided_container %}
+{{ dependencies }}  <!-- spacy parse svg --> 
+<div id=full-output>
+  <div class="alert alert-success" role="alert" id=word-count>
+    Word count: {{word_count}}
+  </div>
+  <div class="alert alert-success" role="alert" id=actual-words>
+    Words: {{words}}
+  </div>
+  <br>
+  <div id="again">
+    <a class="btn btn-large btn-info" href="/">Another</a>
+  </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,21 @@
+{% extends 'event-base.html' %}
+
+{% block inhead %}
+<title>Parse</title>
+{% endblock %}
+
+{% block provided_container %}
+<form method="POST" role="form" action='/visualization' class='bare-bones-input' novalidate>
+  <div class="form-group">
+    <label for="main-input-text">
+      <h4>Enter sentence to diagram</h4>
+    </label>
+    <textarea class="form-control" id="main-input-text" name="user-text" rows="10" placeholder="Text" required></textarea>
+    <div class="invalid-feedback">
+      Please enter some text.
+    </div>
+  </div>
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  <button type="submit" class="btn btn-primary">Submit Text</button>
+</form>
+{% endblock %}
