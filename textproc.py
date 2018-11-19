@@ -1,9 +1,18 @@
 import logging
 import spacy
 
+#nlp = spacy.load('en')
 nlp = spacy.load('en_core_web_sm')# 
 # a spaCy modelized object is conventionally called a "doc"
 # use: docify('this is some text') -> spacy_doc
+
+def get_beam_parses(doc):
+    parses = []
+    beams, tokvecs = nlp.parser.beam_parse([doc], beam_width=8)
+    for beam in beams:
+        parse = nlp.parser.moves.get_beam_annot(beam)
+        parses.append(parse)
+    return parses
 
 def display_dependencies(doc): # returns svg
     return spacy.displacy.render([doc], style='dep', page=False)

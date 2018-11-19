@@ -3,7 +3,7 @@ from datetime import datetime
 from flask import Flask, render_template, flash, redirect, url_for, request, g, jsonify, current_app, Markup
 from flask_bootstrap import Bootstrap
 from flask_wtf.csrf import CSRFProtect
-from api import process_text
+from textapi import process_text
 
 
 app = Flask(__name__)
@@ -29,11 +29,11 @@ def text_output():
     else: # GET
         return redirect(url_for('index'))
 
-@app.route('/enjoin', methods=['GET'])
-def enjoin():
+@app.route('/enjamb', methods=['GET'])
+def enjamb():
     return render_template('input.html')
 
 @app.route('/', methods=['GET'])
 def index():
-    return redirect(url_for('enjoin'))
+    return redirect(url_for('enjamb'))
 
